@@ -19,13 +19,11 @@ const pgClient = new Pool({
   port: keys.pgPort
 });
 
-pgClient.on('error', () => {
-  console.log(`Lost the Postgres Connection ...`);
+pgClient.on('connect', () => {
+  pgClient
+    .query('CREATE TABLE IF NOT EXISTS values (number INT)')
+    .catch((err) => console.log(err));
 });
-
-pgClient
-  .query('CREATE TABLE IF NOT EXISTS values (number INT)')
-  .catch(err => console.log(err));
 
 // Redis client setup
 const redis = require('redis');
