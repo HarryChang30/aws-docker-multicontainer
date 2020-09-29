@@ -9,12 +9,12 @@ script:
   - docker run -e CI=true harrychang12/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t harrychang12/multicontainer-client ./client
-  - docker build -t harrychang12/multicontainer-nginx ./nginx
-  - docker build -t harrychang12/multicontainer-server ./server
-  - docker build -t harrychang12/multicontainer-worker ./worker
+  - docker build -t harrychang12/multicontainer-client:latest ./client
+  - docker build -t harrychang12/multicontainer-nginx:latest ./nginx
+  - docker build -t harrychang12/multicontainer-server:latest ./server
+  - docker build -t harrychang12/multicontainer-worker:latest ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push harrychang12/multicontainer-client
-  - docker push harrychang12/multicontainer-nginx
-  - docker push harrychang12/multicontainer-server
-  - docker push harrychang12/multicontainer-worker
+  - docker push harrychang12/multicontainer-client:latest
+  - docker push harrychang12/multicontainer-nginx:latest
+  - docker push harrychang12/multicontainer-server:latest
+  - docker push harrychang12/multicontainer-worker:latest
