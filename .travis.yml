@@ -18,3 +18,16 @@ after_success:
   - docker push harrychang12/multicontainer-nginx:latest
   - docker push harrychang12/multicontainer-server:latest
   - docker push harrychang12/multicontainer-worker:latest
+
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: "ap-southeast-1"
+  app: multicontainer-docker
+  env: MulticontainerDocker-env-2
+  bucket_name: elasticbeanstalk-ap-southeast-1-725427206909
+  bucket_path: docker-multicontainer
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
