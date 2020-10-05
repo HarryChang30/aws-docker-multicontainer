@@ -23,7 +23,7 @@ deploy:
   edge: true
   provider: elasticbeanstalk
   region: "ap-southeast-1"
-  app: multicontainer-docker
+  app: multicontainer-aws
   env: MulticontainerAws-env
   bucket_name: elasticbeanstalk-ap-southeast-1-725427206909
   bucket_path: docker-multicontainer
